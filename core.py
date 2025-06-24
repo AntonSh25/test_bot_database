@@ -1,9 +1,9 @@
-from sqlalchemy import select, text, insert
+from sqlalchemy import select
 from models import UsersORM, ActivitiesORM
 from db import engine
 from db import session_factory
 from models import Base
-import asyncio
+
 
 
 async def create_table():
@@ -37,6 +37,6 @@ async def insert_activities(user_id, username, message_type, message_text):
             username=username,
             message_type=message_type,
             message_text=message_text,
-        )  # добавить поля и переменные
+        ) 
         session.add(activity)
         await session.commit()

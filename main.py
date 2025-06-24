@@ -1,5 +1,5 @@
 from environs import Env
-from aiogram import Dispatcher, Bot, F
+from aiogram import Dispatcher, Bot
 from aiogram.types import Message
 from aiogram.filters import CommandStart
 from core import create_table, insert_users, insert_activities
