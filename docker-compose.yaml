@@ -14,7 +14,7 @@ services:
       - "${POSTGRES_PORT}:5432"
     restart: unless-stopped
     healthcheck:
-      test: ["CMD-SHELL", "pg_isready -U ${POSTGRES_USER} -d ${POSTGRES_DB}"]
+      test: [ "CMD-SHELL", "pg_isready -U ${POSTGRES_USER} -d ${POSTGRES_DB}" ]
       interval: 5s
       timeout: 5s
       retries: 5
@@ -55,16 +55,16 @@ services:
   redis:
     image: redis:7.4-alpine
     container_name: redis
-    env_file: 
+    env_file:
       - .env
     volumes:
       - ./.redis_data:/data
     restart: unless-stopped
     ports:
       - "${REDIS_PORT}:6379"
-    command: ["redis-server", "--appendonly", "yes", "--requirepass", "${REDIS_PASSWORD}"]
+    command: [ "redis-server", "--appendonly", "yes", "--requirepass", "${REDIS_PASSWORD}" ]
     healthcheck:
-      test: ["CMD", "redis-cli", "-a", "${REDIS_PASSWORD}", "PING"]
+      test: [ "CMD", "redis-cli", "-a", "${REDIS_PASSWORD}", "PING" ]
       interval: 10s
       timeout: 3s
       retries: 3
