@@ -19,6 +19,6 @@ class ActivitiesORM(Base):
     id: Mapped[int] = mapped_column(primary_key=True)
     user_id: Mapped[int]
     username: Mapped[str]
-    message_type: Mapped[str]
-    message_text: Mapped[str]
+    message_type: Mapped[str] 
+    message_text: Mapped[str] = mapped_column(nullable=True)
     created_at: Mapped[datetime] = mapped_column(default=datetime.utcnow)
