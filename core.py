@@ -1,16 +1,16 @@
 from sqlalchemy import select, text, insert
-from models import UsersORM, metadata_obj, ActivitiesORM
+from models import UsersORM, ActivitiesORM
 from db import engine
 from db import session_factory
+from models import Base
 import asyncio
 
 
 async def create_table():
     async with engine.begin() as conn:
         # Drop existing tables and create new ones
-        await conn.run_sync(metadata_obj.drop_all)
-        await conn.run_sync(metadata_obj.create_all)
-
+        await conn.run_sync(Base.metadata.drop_all)
+        await conn.run_sync(Base.metadata.create_all)
 
 
 async def insert_users(user_id: int, username: str):
